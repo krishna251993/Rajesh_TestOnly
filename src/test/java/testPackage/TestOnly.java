@@ -35,7 +35,8 @@ public class TestOnly {
 		HashMap<String, Object> chromeOptionsMap=new HashMap<String , Object>();
 		//options.setBinary(DRIVER_PATH+CHROME_FILE);
 		options.setExperimentalOption("prefs", chromePrefs);
-		options.addArguments("--test-type");
+		options.addArguments("--headless");
+		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-extentions");
 		
 		
