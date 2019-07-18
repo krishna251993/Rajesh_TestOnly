@@ -12,7 +12,6 @@ public class TestOnly {
 	public void testOnly() {
 		WebDriverManager.chromedriver()
 		.version("2.40")
-		.arch32()
 		.setup();
 		WebDriver driver= new ChromeDriver();
 		driver.get("https://www.google.com/");
