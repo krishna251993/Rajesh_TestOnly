@@ -22,7 +22,7 @@ public class TestOnly {
 
 		WebDriver driver= new ChromeDriver(options);
 		driver.get("https://www.google.com/");
-		System.out.println("success");
+		//System.out.println("success");
 	}
 
 }
