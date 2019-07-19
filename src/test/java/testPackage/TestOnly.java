@@ -15,9 +15,10 @@ public class TestOnly {
 	
 	@Test
 	public void testOnly() {
-		WebDriverManager.chromedriver()
-		.version("2.40")
-		.setup();
+		//WebDriverManager.chromedriver()
+		//.version("2.40")
+		//.setup();
+		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "/Drivers/chromedriver.exe");
 		/*
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("–no-sandbox");
@@ -35,8 +36,7 @@ public class TestOnly {
 		HashMap<String, Object> chromeOptionsMap=new HashMap<String , Object>();
 		//options.setBinary(DRIVER_PATH+CHROME_FILE);
 		options.setExperimentalOption("prefs", chromePrefs);
-		options.addArguments("--headless");
-		options.addArguments("--no-sandbox");
+		options.addArguments("--test-type");
 		options.addArguments("--disable-extentions");
 		
 		
