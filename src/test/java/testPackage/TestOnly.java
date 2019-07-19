@@ -15,10 +15,10 @@ public class TestOnly {
 	
 	@Test
 	public void testOnly() {
-		//WebDriverManager.chromedriver()
-		//.version("2.40")
-		//.setup();
-		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "/Drivers/chromedriver");
+		WebDriverManager.chromedriver()
+		.version("2.40")
+		.setup();
+		//System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "/Drivers/chromedriver");
 		/*
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("–no-sandbox");
