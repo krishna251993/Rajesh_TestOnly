@@ -52,7 +52,7 @@
 	<dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
-    <version>3.141.59</version>
+    <version>2.53.1</version>
 	</dependency>
 	
 		<dependency>
@@ -82,69 +82,63 @@
   
   <build>
 	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-surefire-plugin</artifactId>
-			<version>2.18</version>
-			<configuration>
-				<suiteXmlFiles>
-						<!-- TestNG suite XML files -->
-						
-						<suiteXmlFile>testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
-			</configuration>
-		</plugin>
-		<plugin>
-			<artifactId>maven-failsafe-plugin</artifactId>
-			<version>2.18</version>
-			<configuration>
-				<includes>
-					 <include>**/cucumber/junit/**/*.java</include>
-					<include>**/cucumber/*.java</include>
-				</includes>
-				<reuseForks>true</reuseForks>
-			</configuration>
-			<executions>
-				<execution>
-					<goals>
-						<goal>integration-test</goal>
-						<goal>verify</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.2</version>
-			<configuration>
-				<source>1.8</source>
-				<target>1.8</target>
-			</configuration>
-		</plugin>
-		<plugin>
-			<groupId>net.serenity-bdd.maven.plugins</groupId>
-			<artifactId>serenity-maven-plugin</artifactId>
-			<version>${serenity.maven.version}</version>
-			<dependencies>
-				<dependency>
-					<groupId>net.serenity-bdd</groupId>
-					<artifactId>serenity-core</artifactId>
-					<version>${serenity.version}</version>
-				</dependency>
-				<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-			</dependencies>
-			<executions>
-				<execution>
-					<id>serenity-reports</id>
-					<phase>post-integration-test</phase>
-					<goals>
-						<goal>aggregate</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-	</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18.1</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <encoding>UTF-8</encoding>
+                            <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <includes>
+                                <includesFile>**/*UITestsRunner.java</includesFile>
+                            </includes>
+                        </configuration>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>3.8.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>testing</projectName> 
+
+                            <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
+                            <cucumberOutput>target/cucumber-reports/CucumberTestReport.json</cucumberOutput>
+                            <buildNumber>1</buildNumber>
+                            <parallelTesting>false</parallelTesting>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
 </build>
 <profiles>
 	<profile>
