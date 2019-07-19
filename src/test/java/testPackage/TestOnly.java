@@ -18,7 +18,7 @@ public class TestOnly {
 		//WebDriverManager.chromedriver()
 		//.version("2.40")
 		//.setup();
-		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "/Drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "/Drivers/chromedriver");
 		/*
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("–no-sandbox");
